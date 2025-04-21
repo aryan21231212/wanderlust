@@ -1,0 +1,128 @@
+<% layout('/layout/boilerplate') -%>
+
+<style>
+  #filters{
+    margin-top: 0rem !important;
+    display: flex;
+    align-items: center;
+  }
+  .filter{
+    margin-right: 2rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+
+  .tax{
+    opacity: 0;
+  }
+  .tax-toogle{
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 2rem;
+  }
+</style>
+
+<body>
+    <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic cities</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic cities</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-chess-rook"></i></div>
+        <p>Castles</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing pools</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+
+      <div class="tax-toogle">
+        <div class="form-check form-switch form-check-reverse">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+          <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="cards_container">
+        <%  for(let list of listing){ %>
+            <a class="contain" href="/listings/<%= list._id%>">
+                
+                    <div class="card listing-card">
+                        <img src="<%=list.image.URL%>" class="card-img-top" alt="listing images">
+                        <div class="card-body">
+                          <p class="card-text">
+                           <b><%=list.title%></b> <br>
+                           &#8377; <%=list.price.toLocaleString("en-IN")%> / night
+                          &nbsp; &nbsp;  <i class="tax" >+18%GST</i> 
+                          </p>
+                        </div>
+                      </div>
+                
+            </a>
+            <% } %>
+    </div>
+
+
+
+
+</body>
+
+
+<script>
+  let tax_button = document.querySelector('.tax-toogle')
+  tax_button.addEventListener('click',()=>{
+  
+    let tax_info =   document.getElementsByClassName('tax')
+
+    for(let tax of tax_info){
+      if(tax.style.opacity !=1){
+        tax.style.opacity = 1
+      }
+      else{
+        tax.style.opacity = 0;
+      }
+    }
+     
+  })
+</script>
