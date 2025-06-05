@@ -1,35 +1,32 @@
 <% layout('/layout/boilerplate') -%>
 
 <style>
-  #filters{
-    margin-top: 0rem !important;
-    display: flex;
-    align-items: center;
-  }
-  .filter{
-    margin-right: 2rem;
-    text-align: center;
-    opacity: 0.7;
-  }
-  .filter:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  
+  /* ... your existing styles ... */
 
-  .tax{
-    opacity: 0;
-  }
-  .tax-toogle{
-    border: 1px solid black;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-left: 2rem;
+  @media (max-width: 768px) {
+    #filters {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding: 0.5rem;
+    }
+
+    .filter {
+      flex: 0 0 auto;
+      margin-right: 1rem;
+    }
+
+    .tax-toogle {
+      margin-left: 0.5rem;
+      margin-top: 1rem;
+      flex: 0 0 100%;
+    }
+
+    .cards_container {
+      padding: 1rem;
+    }
   }
 </style>
+
 
 <body>
     <div id="filters">
